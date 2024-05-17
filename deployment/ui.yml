@@ -1,0 +1,40 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: kafka-ui
+  labels:
+    app: kafka-ui
+spec:
+  containers:
+  - name: kafka-ui
+    image: "docker.io/provectuslabs/kafka-ui"
+    resources:
+      limits:
+        cpu: 500m
+        memory: 1Gi
+      requests:
+        cpu: 500m
+        memory: 1Gi
+    ports:
+    - containerPort: 8080
+      name:  http
+    env:
+    - name: DYNAMIC_CONFIG_ENABLED
+      value: "true"
+  restartPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: kafka-ui
+spec:
+  selector:
+    app: kafka-ui
+  type: NodePort
+  ports:
+  - name: kafka-ui
+    protocol: TCP
+    port: 8080
+    targetPort: 8080
+---
+

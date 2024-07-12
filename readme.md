@@ -17,7 +17,12 @@ kubectl create namespace kafka
 kubectl create -f 'https://strimzi.io/install/latest?namespace=kafka' -n kafka
 ```
 
-Démarrez le cluster kafka avec `kubectl apply -f ./deployment/kafka.yml -n kafka`
+Démarrez le cluster kafka avec
+
+```
+kubectl apply -f ./deployment/kafka.yaml -n kafka
+kubectl apply -f ./deployment/kafkanodepool.yaml -n kafka
+```
 
 ## Écrire quelques messages
 
@@ -36,7 +41,7 @@ Lancez le pod avec
 
 ```bash
 kubectl create namespace myapp
-kubectl apply -f ./deployment/myapp.yml -n myapp
+kubectl apply -f ./deployment/myapp.yaml -n myapp
 ```
 
 ## Observer le topic avec kafka ui
@@ -45,7 +50,7 @@ Installez kafka ui avec
 
 ```bash
 kubectl create namespace kafka-ui
-kubectl apply -f ./deployment/ui.yml -n kafka-ui
+kubectl apply -f ./deployment/ui.yaml -n kafka-ui
 ```
 
 naviguez sur `http://localhost:8080`, intro

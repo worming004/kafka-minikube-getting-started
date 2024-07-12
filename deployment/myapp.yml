@@ -27,7 +27,7 @@ spec:
           # - Each init container must complete successfully before the next one starts.
       containers:
       - name: myapp
-        image: myapp:1.0.0
+        image: ko://github.com/worming004/kafka-first/
         imagePullPolicy: IfNotPresent
         resources:
           requests:

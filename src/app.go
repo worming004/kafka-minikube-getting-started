@@ -10,7 +10,6 @@ import (
 func main() {
 	topic := "my-topic"
 	partition := 0
-
 	conn, err := kafka.DialLeader(context.Background(), "tcp", "my-cluster-kafka-bootstrap.kafka.svc.cluster.local:9092", topic, partition)
 	if err != nil {
 		log.Fatal("failed to dial leader:", err)
@@ -29,5 +28,5 @@ func main() {
 	if err := conn.Close(); err != nil {
 		log.Fatal("failed to close writer:", err)
 	}
-	time.Sleep(10 * time.Minute)
+	time.Sleep(10 * time.Second)
 }

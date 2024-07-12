@@ -1,4 +1,4 @@
-module github/worming004/kafka-first
+module github.com/worming004/kafka-first
 
 go 1.22.0
 
